@@ -1,0 +1,15 @@
+﻿.PrevReply{
+    padding: 5px;
+    border: solid 5px black;
+    border-radius: 10px;
+    margin:5px;
+}
+
+.ReplyTop {
+    overflow: hidden;
+}
+
+    .ReplyTop > div {
+        display: inline-block;
+        margin-left: 10px;
+    }
