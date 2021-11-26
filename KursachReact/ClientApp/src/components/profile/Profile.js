@@ -21,7 +21,7 @@ export class Profile extends Component {
     };
 
     componentDidMount() {
-        fetch(API_URL + 'api/users/getPassword/' + this.props.location.state.user.username)
+        fetch('api/users/getPassword/' + this.props.location.state.user.username)
             .then((response) => {
                 return response.json();
             })
@@ -30,7 +30,7 @@ export class Profile extends Component {
             });
         
 
-        fetch(API_URL + 'api/admins/status/' + this.props.location.state.user.username)
+        fetch('api/admins/status/' + this.props.location.state.user.username)
             .then((response) => {
                 return response.json();
             })
@@ -64,6 +64,36 @@ export class Profile extends Component {
     }
     
     
+    renderAdminButtons()
+    {
+        debugger
+        if(this.state.isAdmin === true){
+            return(
+                <div>
+                    <NavLink tag={Link} className="btn btn-secondary"
+                             to={{
+                                 pathname: "/manageUsers",
+                                 state: { user: this.props.location.state.user }
+                             }}>
+                        Manage users
+                    </NavLink>
+
+                    <NavLink tag={Link} className="btn btn-secondary"
+                             to={{
+                                 pathname: "/manageChats",
+                                 state: { user: this.props.location.state.user }
+                             }}>
+                        Manage chats
+                    </NavLink>
+                </div>
+        )
+        }
+        else
+        {
+            return (<div></div>)
+        }
+    }
+    
     
     render () {
         return (
@@ -73,6 +103,9 @@ export class Profile extends Component {
                     <p>Username: {this.state.username}</p>
                     <p>Password: {this.state.password}</p>
 
+
+                    {this.renderAdminButtons()}
+                    
                     
                     <NavLink tag={Link} className="btn btn-secondary"
                              to={{
@@ -80,6 +113,8 @@ export class Profile extends Component {
                              }}>
                         Log out
                     </NavLink>
+                    
+                    
                     
                     <form className="changeProfileForm" onSubmit={this.handleSubmit}>
                         <label><b>Password</b></label>

@@ -22,13 +22,6 @@ namespace KursachReact.Controllers
         public UsersController(ApplicationContext context)
         {
             db = context;
-
-            Admin admin = new Admin
-            {
-                Username = "usertest"
-            };
-            db.Admins.Add(admin);
-            db.SaveChanges();
         }
 
 
@@ -87,7 +80,14 @@ namespace KursachReact.Controllers
         }
         
         
-        
+        [HttpGet]
+        [Route("remove/{id}")]
+        public async Task<IActionResult> Remove(int id)
+        {
+            db.Users.Remove(db.Users.Where(c => c.Id == id).FirstOrDefault());
+            db.SaveChanges();
+            return Ok();
+        }
         
         
     }

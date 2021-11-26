@@ -22,13 +22,6 @@ namespace KursachReact.Controllers
         public AdminsController(ApplicationContext context)
         {
             db = context;
-
-            Admin admin = new Admin
-            {
-                Username = "usertest"
-            };
-            db.Admins.Add(admin);
-            db.SaveChanges();
         }
 
 
