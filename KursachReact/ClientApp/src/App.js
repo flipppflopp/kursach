@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router';
+import { Route } from 'react-router-dom';
 import { Home } from './components/Home';
 import {Login} from './components/auth/Login';
 import {Register} from './components/auth/Register';
 import {Profile} from './components/profile/Profile';
 import { Chat } from './components/Chat/Chat';
 import {ManageUsers} from './components/manage/ManageUsers'
-import {ManageChats} from './components/manage/ManageChats'
+
 
 import './custom.css'
 
@@ -22,7 +22,7 @@ export default class App extends Component {
             <Route exact path='/profile' component={Profile} />
             <Route exact path='/chat' component={Chat} />
             <Route exact path='/manageUsers' component={ManageUsers} />
-            <Route exact path='/manageChats' component={ManageChats} />
+            
         </div>
     );
   }

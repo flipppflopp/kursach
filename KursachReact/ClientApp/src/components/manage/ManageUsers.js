@@ -25,7 +25,6 @@ export class ManageUsers extends Component {
 
     handleDeleteButton(event, id)
     {
-        if(this.props.location.state.user.id)
         fetch('api/users/remove/' + id)
             .then((response) => {
                 return response.json();
@@ -40,12 +39,13 @@ export class ManageUsers extends Component {
 
 
 
-    renderRoutesList()
+    renderUserList()
     {
         if(this.state.usersList !== null)
         {
             return this.state.usersList.map((el) =>
             {
+                if(this.props.location.state.user.username !== el.name){
                 return (
                     <tr>
                         <td><p>{el.id}</p></td>
@@ -61,6 +61,11 @@ export class ManageUsers extends Component {
                             </button>
                         </td>
                     </tr>)
+                }
+                else
+                {
+                    return(<div></div>)
+                }
             })
         }
 
@@ -76,10 +81,10 @@ export class ManageUsers extends Component {
                     <table>
                         <tr>
                             <th>ID</th>
-                            <th>Chat name</th>
+                            <th>User name</th>
                             <th></th>
                         </tr>
-                        {this.renderRoutesList()}
+                        {this.renderUserList()}
                     </table>
                 </div>
             </Layout>

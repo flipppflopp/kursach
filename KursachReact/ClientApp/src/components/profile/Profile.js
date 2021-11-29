@@ -77,14 +77,6 @@ export class Profile extends Component {
                              }}>
                         Manage users
                     </NavLink>
-
-                    <NavLink tag={Link} className="btn btn-secondary"
-                             to={{
-                                 pathname: "/manageChats",
-                                 state: { user: this.props.location.state.user }
-                             }}>
-                        Manage chats
-                    </NavLink>
                 </div>
         )
         }

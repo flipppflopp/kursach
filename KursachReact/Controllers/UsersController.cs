@@ -86,7 +86,7 @@ namespace KursachReact.Controllers
         {
             db.Users.Remove(db.Users.Where(c => c.Id == id).FirstOrDefault());
             db.SaveChanges();
-            return Ok();
+            return Ok(db.Users.ToList());
         }
         
         
